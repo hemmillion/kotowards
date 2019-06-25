@@ -1,0 +1,2 @@
+class ProverbsController < ApplicationController
+end
