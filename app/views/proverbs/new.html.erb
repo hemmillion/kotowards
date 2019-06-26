@@ -1,0 +1,11 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_tag('/proverbs', method: :post) do %>
+      <h3>
+        投稿する
+      </h3>
+      <textarea name="text" placeholder="ことわざを入力してください" rows="10" cols="53"></textarea>
+      <input type="submit" value="SEND">
+    <% end %>
+  </div>
+</div>

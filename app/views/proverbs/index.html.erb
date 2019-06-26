@@ -1,0 +1,7 @@
+<div class="contents row" >
+  <% @proverbs.each do |proverb| %>
+    <div class="content_post">
+      <%= simple_format(proverb.text) %>
+    </div>
+  <% end %>
+</div>
