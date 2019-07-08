@@ -1,0 +1,21 @@
+<div class="content_post box22 clearfix">
+  <div class="kotowaza">
+    <%= link_to proverb.text, "/proverbs/#{proverb.id}" %>
+  </div>
+  <% if proverb.comments.present? %>
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: <%= proverb.rate_average %>0%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+  <% else %>
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: 0%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+  <% end %>
+  <!--<div><%= link_to 'show', "/proverbs/#{proverb.id}", method: :get, class: 'btn-square-pop' %></div>-->
+  <!--<% if user_signed_in? && current_user.id == proverb.user_id %>-->
+  <!--  <div><%= link_to 'edit', "/proverbs/#{proverb.id}/edit", method: :get, class: 'btn-square-pop' %></div>-->
+  <!--  <div><%= link_to 'delete', "/proverbs/#{proverb.id}", method: :delete, class: 'btn-square-pop' %></div>-->
+  <!--<% end %>-->
+</div>

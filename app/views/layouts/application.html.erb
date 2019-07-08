@@ -10,19 +10,43 @@
   </head>
 
   <body>
-    <header>
+    <header class="clearfix">
       <div class="header_left">
         <h1><a href="/">kotowaza ranking</a></h1>
       </div>
-      <div class="header_right">
-        <div class="post">
-          <a href="/proverbs/new">logout</a>
+      <% if user_signed_in? %>
+        <div class="header_right clearfix">
+          <ul>
+            <li>
+              <%= link_to "log out", destroy_user_session_path, method: :delete %>
+            </li>
+            <li>
+              <a href="/proverbs/new">new</a>
+            </li>
+            <li>
+              <a href="/proverbs/search">search</a>
+            </li>
+            <li>
+              <%= link_to 'my page', "/users/#{current_user.id}" %>
+            </li>
+          </ul>
         </div>
-        <div class="post">
-          <a href="/proverbs/new">new</a>
+      <% else %>
+        <div class="header_right">
+          <ul>
+            <li>
+              <%= link_to "log in", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "sign up", new_user_registration_path %>
+            </li>
+          </ul>
         </div>
-      </div>
+      <% end %>
     </header>
     <%= yield %>
+    <footer>
+      kotowaza ranking
+    </footer>
   </body>
 </html>

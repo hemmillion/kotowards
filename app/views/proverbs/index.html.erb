@@ -1,7 +1,14 @@
-<div class="contents row" >
+<div class="second_header">
+  <h1>ことわざ、それは人智の結晶。</h1>
+</div>
+
+<div class="contents_row clearfix" >
+  <h2>
+    スピーチなどで実際に使えることわざを評価してください。<br>
+    ことわざが評価の高い順に表示されます。
+  </h2>
   <% @proverbs.each do |proverb| %>
-    <div class="content_post">
-      <%= simple_format(proverb.text) %>
-    </div>
+    <%= render partial: "proverb", locals: { proverb: proverb } %>
   <% end %>
+  <%= paginate(@proverbs) %>
 </div>

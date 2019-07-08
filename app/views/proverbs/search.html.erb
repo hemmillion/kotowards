@@ -1,0 +1,12 @@
+<div class="contents_row">
+  <h2>ことわざを検索</h2>
+  <%= form_tag('/proverbs/search', method: :get) do %>
+    <input class="search__query" name="keyword" placeholder="ことわざを検索" type="text" value="">
+    <input class="btn-search" value="search" type="submit">
+  <% end %>
+  <h2>検索結果</h2>
+    <% @proverbs.each do |proverb| %>
+      <%= link_to simple_format(proverb.text), "/proverbs/#{proverb.id}" %>
+    <% end %>
+  <%= paginate(@proverbs) %>
+</div>

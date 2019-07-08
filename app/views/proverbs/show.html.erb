@@ -1,0 +1,45 @@
+<div class="contents_row clearfix" >
+  <div class="content_post box22 clearfix">
+    <p class="kotowaza"><%= @proverb.text %></p>
+    <!--<span class="name">by <%= @proverb.user.nickname %></span>-->
+    <% if @proverb.comments.present? %>
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: <%= @proverb.rate_average %>0%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
+    <% else %>
+      <div class="star-rating">
+        <div class="star-rating-front" style="width: 0%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+    <% end %>
+      <!--<% if user_signed_in? && current_user.id == @proverb.user_id %>-->
+      <!--  <div><%= link_to 'edit', "/proverbs/#{@proverb.id}/edit", method: :get, class: 'btn-square-pop' %></div>-->
+      <!--  <div><%= link_to 'delete', "/proverbs/#{@proverb.id}", method: :delete, class: 'btn-square-pop' %></div>-->
+      <!--<% end %>-->
+      <% if user_signed_in? %>
+        <div><%= link_to 'review', "/proverbs/#{@proverb.id}/comments/new", method: :get, class: 'btn-square-pop' %></div>
+      <% end %>
+  </div>
+  
+    <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+            <div class="star-rating">
+              <div class="star-rating-front" style="width: <%= comment.rate %>0%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <!--<span class="rating-star"><i class="star-actived rate-<%= comment.rate %>0"></i></span>-->
+          </p>
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <div><%= link_to 'delete', "/proverbs/#{@proverb.id}/comments/#{comment.id}", method: :delete %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <a class="btn-square-pop" href="/">back</a>
+</div>
