@@ -1,9 +1,9 @@
 class ProverbsController < ApplicationController
   
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   
   def index
-    @proverbs = Proverb.includes(:user, :comments).page(params[:page]).per(10).order("average DESC")
+    @proverbs = Proverb.includes(:user, :comments).limit(10).order("average DESC")
   end
   
   def new
@@ -34,7 +34,7 @@ class ProverbsController < ApplicationController
   end
 
   def search
-    @proverbs = Proverb.where('text LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10).order("created_at DESC")
+    @proverbs = Proverb.where('text LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10).order("text ASC")
   end
   
   private

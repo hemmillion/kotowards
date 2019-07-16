@@ -3,12 +3,14 @@
 </div>
 
 <div class="contents_row clearfix" >
-  <h2>
-    スピーチなどで実際に使えることわざを評価してください。<br>
-    ことわざが評価の高い順に表示されます。
-  </h2>
-  <% @proverbs.each do |proverb| %>
-    <%= render partial: "proverb", locals: { proverb: proverb } %>
+  <div class="third_header clearfix">
+    <h2>
+      スピーチなどで実際に使えることわざを評価してください。<br>
+      ことわざが評価の高い順に表示されます。
+    </h2>
+    <a class="btn-square-pop" href="/proverbs/search">すべてのことわざを表示</a>
+  </div>
+  <% @proverbs.each_with_index do |proverb, rank| %>
+    <%= render partial: "proverb", locals: { proverb: proverb, rank: rank } %>
   <% end %>
-  <%= paginate(@proverbs) %>
 </div>

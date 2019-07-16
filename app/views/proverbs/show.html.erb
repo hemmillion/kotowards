@@ -1,7 +1,9 @@
 <div class="contents_row clearfix" >
+  <% unless user_signed_in? %>
+    <p>※ログインしてしてことわざを評価してください。</p>
+  <% end %>
   <div class="content_post box22 clearfix">
-    <p class="kotowaza"><%= @proverb.text %></p>
-    <!--<span class="name">by <%= @proverb.user.nickname %></span>-->
+    <p class="kotowaza"><%= @proverb.text %>　</p>
     <% if @proverb.comments.present? %>
     <div class="star-rating">
       <div class="star-rating-front" style="width: <%= @proverb.rate_average %>0%">★★★★★</div>
@@ -27,7 +29,8 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <!--<strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>-->
+            <a><%= comment.user.nickname %>：</a>
             <%= comment.text %>
             <div class="star-rating">
               <div class="star-rating-front" style="width: <%= comment.rate %>0%">★★★★★</div>
@@ -36,7 +39,7 @@
             <!--<span class="rating-star"><i class="star-actived rate-<%= comment.rate %>0"></i></span>-->
           </p>
           <% if user_signed_in? && current_user.id == comment.user_id %>
-            <div><%= link_to 'delete', "/proverbs/#{@proverb.id}/comments/#{comment.id}", method: :delete %></div>
+            <div><%= link_to 'コメントを削除', "/proverbs/#{@proverb.id}/comments/#{comment.id}", method: :delete %></div>
           <% end %>
         <% end %>
       <% end %>

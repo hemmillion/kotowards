@@ -1,7 +1,7 @@
 <div class="contents_row clearfix">
   <p><%= @nickname %>さんの投稿一覧</p>
-  <% @proverbs.each do |proverb| %>
-    <%= render partial: "proverbs/proverb", locals: { proverb: proverb } %>
+  <% @proverbs.each_with_index do |proverb, rank| %>
+    <%= render partial: "proverbs/proverb", locals: { proverb: proverb, rank: rank } %>
   <% end %>
   <%= paginate(@proverbs) %>
 </div>

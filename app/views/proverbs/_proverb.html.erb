@@ -1,6 +1,6 @@
 <div class="content_post box22 clearfix">
   <div class="kotowaza">
-    <%= link_to proverb.text, "/proverbs/#{proverb.id}" %>
+    <%= link_to "#{rank+1}位 #{proverb.text}", "/proverbs/#{proverb.id}" %>
   </div>
   <% if proverb.comments.present? %>
     <div class="star-rating">

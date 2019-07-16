@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kotowazz</title>
+    <title>Kotowaza</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -26,9 +26,9 @@
             <li>
               <a href="/proverbs/search">search</a>
             </li>
-            <li>
-              <%= link_to 'my page', "/users/#{current_user.id}" %>
-            </li>
+            <!--<li>-->
+            <!--  <%= link_to 'my page', "/users/#{current_user.id}" %>-->
+            <!--</li>-->
           </ul>
         </div>
       <% else %>
@@ -39,6 +39,9 @@
             </li>
             <li>
               <%= link_to "sign up", new_user_registration_path %>
+            </li>
+            <li>
+              <a href="/proverbs/search">search</a>
             </li>
           </ul>
         </div>
